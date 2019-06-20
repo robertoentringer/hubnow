@@ -1,0 +1,38 @@
+{
+  "name": "hubnow",
+  "version": "0.0.1",
+  "description": "Node app for play with githut api.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node $npm_package_main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "github",
+    "cmd",
+    "terminal",
+    "git-clone"
+  ],
+  "author": "Roberto Entringer",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertoentringer/hubnow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robertoentringer/hubnow/issues"
+  },
+  "homepage": "https://github.com/robertoentringer/hubnow#readme"
+}
