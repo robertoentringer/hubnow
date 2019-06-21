@@ -3,23 +3,36 @@ import { request } from "https"
 import util from "util"
 
 const accessToken = "a43970caa5668b1418d7bdd3da5a10a1cc55ba49"
-const query = `{
+
+const query = `query repo($first: Int, $after: String) {
   viewer {
-    repositories(first: 100) {
-      totalCount
+    login
+    name
+    repositories(first: $first, after: $after, isFork: false) {
       nodes {
-        nameWithOwner
+        name
+        sshUrl
       }
+      edges {
+        cursor
+        node {
+          id
+          name
+        }
+      }
+      totalCount
       pageInfo {
-        endCursor
+        startCursor
         hasNextPage
+        endCursor
       }
     }
   }
 }`
+const variables = { first: 10, after: "Y3Vyc29yOnYyOpHOB3nnIg==" }
+const graphql = { query, variables }
 
 const headers = { Authorization: `Bearer ${accessToken}`, "user-agent": "node.js" }
-const q = JSON.stringify({ query })
 const options = {
   hostname: "api.github.com",
   path: "/graphql",
@@ -36,7 +49,7 @@ const api = () =>
     const req = request(options)
       .on("response", cb)
       .on("error", err => reject(err))
-    req.write(q)
+    req.write(JSON.stringify(graphql))
     req.end()
   })
 
