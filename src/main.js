@@ -1,24 +1,14 @@
 import { request } from "https"
-
 import util from "util"
 
-const accessToken = "a43970caa5668b1418d7bdd3da5a10a1cc55ba49"
-
-const query = `query repo($first: Int, $after: String) {
+const query = `query repo($first: Int) {
   viewer {
     login
     name
-    repositories(first: $first, after: $after, isFork: false) {
+    repositories(first: $first, isFork: false) {
       nodes {
         name
         sshUrl
-      }
-      edges {
-        cursor
-        node {
-          id
-          name
-        }
       }
       totalCount
       pageInfo {
@@ -29,9 +19,9 @@ const query = `query repo($first: Int, $after: String) {
     }
   }
 }`
-const variables = { first: 10, after: "Y3Vyc29yOnYyOpHOB3nnIg==" }
+const variables = { first: 2 }
 const graphql = { query, variables }
-
+const accessToken = "a43970caa5668b1418d7bdd3da5a10a1cc55ba49"
 const headers = { Authorization: `Bearer ${accessToken}`, "user-agent": "node.js" }
 const options = {
   hostname: "api.github.com",
@@ -53,6 +43,35 @@ const api = () =>
     req.end()
   })
 
-const main = async () => console.log(util.inspect(JSON.parse(await api()), true, 12, true))
+const main = async () => {
+  const data = await api()
+  const obj = JSON.parse(data)
+  const {
+    data: {
+      viewer: {
+        repositories: { nodes: repos }
+      }
+    }
+  } = obj
+  const search = (needle, haystack, found = []) => {
+    Object.keys(haystack).forEach(key => {
+      if (typeof haystack[key] === "object") search(needle, haystack[key], found)
+      else if (key === needle) {
+        found.push(haystack[key])
+        return found
+      }
+    })
+    return found
+  }
+  let names = []
+  JSON.parse(data, (key, value) => {
+    if (key === "name") names.push(value)
+    return value
+  })
+  console.log(search("name", obj))
+  console.log(names)
+  console.log(util.inspect(obj, true, 12, true))
+  console.log(repos)
+}
 
 main()

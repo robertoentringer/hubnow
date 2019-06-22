@@ -26,7 +26,10 @@
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "inquirer": "^6.4.1",
+    "lodash": "^4.17.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robertoentringer/hubnow.git"
