@@ -7,12 +7,12 @@ License: MIT
 Repo on Github : https://github.com/robertoentringer/hubnow   
 Npm package : https://www.npmjs.com/package/hubnow
 
-# Installation
+## Installation
 
 ```shell
 $ npm -g install hubnow
 ```
-# Usage
+## Usage
 
 ```bash
 $ hubnow
@@ -23,6 +23,6 @@ or
 $ npx hubnow
 ```
 
-# Demo
+## Demo
 
 [![screenshot.gif](screenshot.gif)](https://github.com/robertoentringer/hubnow)
