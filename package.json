@@ -1,6 +1,6 @@
 {
   "name": "hubnow",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Git clone cli to select and clone a remote repo using the GitHub GraphQL API",
   "main": "hubnow.js",
   "bin": {
