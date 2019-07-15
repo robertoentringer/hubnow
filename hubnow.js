@@ -48,7 +48,7 @@ const getRepos = async opts => {
 
   if (resp.message === "Bad credentials") {
     await inputToken()
-    return getRepos(opts.isFork)
+    return getRepos(opts)
   }
 
   console.error("ERROR:", resp.errors[0].message)
