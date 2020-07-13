@@ -7,8 +7,8 @@ const { homedir } = require('os')
 const path = require('path')
 const fs = require('fs')
 
-const home = path.join(homedir(), '.hubnow')
-const auth = path.join(home, 'auth.json')
+const configFolder = path.join(homedir(), '.hubnow')
+const auth = path.join(configFolder, 'auth.json')
 
 const getRepos = async (opts) => {
   const query = `query repo {
@@ -104,7 +104,7 @@ const inputToken = async () => {
 }
 
 const saveToken = (token) => {
-  if (!fs.existsSync(home)) fs.mkdirSync(home)
+  if (!fs.existsSync(configFolder)) fs.mkdirSync(configFolder)
   const helptext = "This is your github credentials file. DON'T SHARE! More: https://git.io/fjrf3"
   const filecontent = JSON.stringify({ helptext, token }, null, 2)
   fs.writeFileSync(auth, filecontent)
@@ -112,7 +112,9 @@ const saveToken = (token) => {
 
 const getToken = async () => {
   try {
-    return JSON.parse(fs.readFileSync(auth)).token
+    return (
+      process.env.GITHUB_TOKEN || process.env.GH_TOKEN || JSON.parse(fs.readFileSync(auth)).token
+    )
   } catch (err) {
     return await inputToken()
   }
