@@ -12,7 +12,6 @@ module.exports = {
     sourceType: "module"
   },
   rules: {
-    "prettier/prettier": ["error", { semi: false, printWidth: 100 }],
     "comma-dangle": ["error", "never"],
     "no-console": ["error", { allow: ["error"] }]
   }

@@ -1,6 +1,6 @@
 {
   "name": "hubnow",
-  "version": "0.0.7",
+  "version": "0.0.0-development",
   "description": "Git clone cli to select and clone a remote repo using the GitHub GraphQL API",
   "main": "hubnow.js",
   "bin": {
@@ -12,9 +12,7 @@
   "scripts": {
     "start": "node ./hubnow.js",
     "lint": "eslint *.js --fix",
-    "prepublishOnly": "npm run lint",
-    "version": "npm run lint && git add -A",
-    "postversion": "git push && git push --tags"
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "git",
@@ -30,17 +28,18 @@
   "author": "Roberto Entringer",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.1.1"
   },
   "dependencies": {
-    "inquirer": "^6.4.1"
+    "inquirer": "^7.3.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robertoentringer/hubnow.git"
+    "url": "https://github.com/robertoentringer/hubnow.git"
   },
   "bugs": {
     "url": "https://github.com/robertoentringer/hubnow/issues"
