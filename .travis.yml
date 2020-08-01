@@ -1,4 +1,7 @@
 language: node_js
+os:
+  - linux
+dist: xenial
 node_js:
   - node
   - 8
@@ -9,7 +12,5 @@ jobs:
       script:
         - npm run lint
       deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npx semantic-release
+        - provider: script
+          script: npx semantic-release
