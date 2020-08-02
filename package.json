@@ -3,6 +3,9 @@
   "version": "0.0.0-development",
   "description": "Git clone cli to select and clone a remote repo using the GitHub GraphQL API",
   "main": "hubnow.js",
+  "engines": {
+    "node": ">=8"
+  },
   "bin": {
     "hubnow": "./hubnow.js"
   },
