@@ -7,13 +7,13 @@
     "node": ">=8"
   },
   "bin": {
-    "hubnow": "./hubnow.js"
+    "hubnow": "hubnow.js"
   },
   "files": [
     "hubnow.js"
   ],
   "scripts": {
-    "start": "node ./hubnow.js",
+    "start": "node hubnow.js",
     "lint": "eslint *.js --fix",
     "semantic-release": "semantic-release"
   },
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertoentringer/hubnow.git"
+    "url": "git+https://github.com/robertoentringer/hubnow.git"
   },
   "bugs": {
     "url": "https://github.com/robertoentringer/hubnow/issues"
